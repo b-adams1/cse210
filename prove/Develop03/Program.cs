@@ -4,6 +4,15 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Develop03 World!");
+        ScriptureGenerator scriptures = new ScriptureGenerator();
+        Scripture scripture = scriptures.GetRandomScripture();
+        while (true)
+        {
+            scripture.Display();
+            string input = Console.ReadLine();
+            if (input.ToLower() == "quit" || scripture.AllHidden())
+                break;
+            scripture.HideRandomWords();
+        }
     }
 }

@@ -1,0 +1,48 @@
+public class Scripture
+{
+    private List<Word> _words;
+    private Reference _reference;
+    private Random _random = new Random();
+
+    public Scripture(string verse, Reference reference)
+    {
+        _reference = reference;
+        _words = new List<Word>();
+        foreach (string w in verse.Split(' '))
+        {
+            _words.Add(new Word(w));
+        }
+    }
+    public void HideRandomWords(int count = 1)
+    {
+        List<Word> visibleWords = new List<Word>();
+        foreach (Word w in _words)
+        {
+            if (!w.IsHidden())
+            {
+                visibleWords.Add(w);
+            }
+        }
+        for (int i = 0; i < count && visibleWords.Count > 0; i++)
+        {
+            int index = _random.Next(visibleWords.Count);
+            visibleWords[index].Hide();
+            visibleWords.RemoveAt(index);
+        }
+    }
+    public void Display()
+    {
+        Console.Clear();
+        Console.WriteLine($"{_reference.Display()}");
+        Console.WriteLine(string.Join(" ", _words.Select(w => w.Display())));
+        Console.WriteLine($"\nHit Enter to continue, or quit to quit");
+    }
+    public bool AllHidden()
+    {
+        foreach (Word w in _words)
+        {
+            if(!w.IsHidden()) return false;
+        }
+        return true;
+    }
+}
