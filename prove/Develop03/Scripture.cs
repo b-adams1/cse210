@@ -31,12 +31,17 @@ public class Scripture
         }
     }
     public void Display()
+{
+    Console.Clear();
+    Console.WriteLine(_reference.Display());
+    List<string> displayedWords = new List<string>();
+    foreach (var w in _words)
     {
-        Console.Clear();
-        Console.WriteLine($"{_reference.Display()}");
-        Console.WriteLine(string.Join(" ", _words.Select(w => w.Display())));
-        Console.WriteLine($"\nHit Enter to continue, or quit to quit");
+        displayedWords.Add(w.Display());
     }
+    Console.WriteLine(string.Join(" ", displayedWords));
+    Console.WriteLine("\nHit Enter to continue, or quit to quit");
+}
     public bool AllHidden()
     {
         foreach (Word w in _words)
