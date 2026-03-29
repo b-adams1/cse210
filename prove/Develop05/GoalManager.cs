@@ -7,9 +7,9 @@ class GoalManager
     private List<Goal> _goals;
     private int _totalPoints;
 
-    public int TotalPoints
+    public int GetTotalPoints()
     {
-        get { return _totalPoints; }
+        return _totalPoints;
     }
 
     public GoalManager()

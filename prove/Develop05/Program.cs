@@ -14,7 +14,7 @@ class Program
         while (running)
         {
             Console.Clear();
-            Console.WriteLine($"Total Points: {manager.TotalPoints}");
+            Console.WriteLine($"Total Points: {manager.GetTotalPoints()}");
             Console.WriteLine("Menu:");
             Console.WriteLine("1. Create Goal");
             Console.WriteLine("2. List Goals");
